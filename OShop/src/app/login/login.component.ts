@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent  {
 
-  constructor(private authservice:AuthService) {
+  constructor(public authservice:AuthService) {
     
    }
 login()
