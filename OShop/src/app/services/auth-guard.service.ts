@@ -7,7 +7,7 @@ import { RouterStateSnapshot } from '@angular/router/src/router_state';
 @Injectable()
 export class AuthGuardService implements CanActivate{
 
-  constructor(private authservice:AuthService,private router:Router) { }
+  constructor(public authservice:AuthService,public router:Router) { }
 
 canActivate(route,state:RouterStateSnapshot) //CanActivate will subscribe Observable(see Docs). So instead of Subscribe we can use map.
 {

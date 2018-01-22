@@ -7,7 +7,7 @@ import { AngularFireObject } from 'angularfire2/database';
 @Injectable()
 export class UserService {
 
-  constructor(private db:AngularFireDatabase) { }
+  constructor(public db:AngularFireDatabase) { }
   get(uid:string):AngularFireObject<AppUser>
   {
      return this.db.object("/users/"+uid);
