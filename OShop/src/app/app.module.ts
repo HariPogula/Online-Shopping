@@ -45,11 +45,13 @@ import { LoginComponent } from './login/login.component';
     RouterModule.forRoot([
       {path:'',component:HomeComponent},
       {path:'products',component:ProductsComponent},
-      {path:'my/orders',component:MyOrdersComponent,canActivate:[AuthGuardService]},
+      {path:'login',component:LoginComponent},
       {path:'shopping-cart',component:ShoppingcartComponent},
+
+      {path:'my/orders',component:MyOrdersComponent,canActivate:[AuthGuardService]},
       {path:'check-out',component:CheckoutComponent,canActivate:[AuthGuardService]},
       {path:'order-success',component:OrderSuccessComponent,canActivate:[AuthGuardService]},
-      {path:'login',component:LoginComponent},
+  
       {path:'admin/products',component:AdminProductsComponent,canActivate:[AuthGuardService]},
       {path:'admin/orders',component:AdminOrdersComponent,canActivate:[AuthGuardService]},
 
