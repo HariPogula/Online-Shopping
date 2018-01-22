@@ -1,4 +1,4 @@
-import { LoginComponent } from './login/login.component';
+
 
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
@@ -36,15 +36,17 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    NgbModule.forRoot(),
     RouterModule.forRoot([
       {path:'',component:HomeComponent},
       {path:'products',component:ProductsComponent},
+      {path:'my/orders',component:MyOrdersComponent},
       {path:'shopping-cart',component:ShoppingcartComponent},
       {path:'check-out',component:CheckoutComponent},
       {path:'order-success',component:OrderSuccessComponent},
      
-      {path:'admin-products',component:AdminProductsComponent},
-      {path:'admin-orders',component:AdminOrdersComponent},
+      {path:'admin/products',component:AdminProductsComponent},
+      {path:'admin/orders',component:AdminOrdersComponent},
 
 
     ])
