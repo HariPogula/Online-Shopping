@@ -2,6 +2,7 @@ import { AuthService } from './services/auth.service';
 import { Component } from '@angular/core';
 
 import { Router } from '@angular/router';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +11,12 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
  
-  constructor(private authservice:AuthService,private router:Router) {
+  constructor(private authservice:AuthService,private router:Router,private userservice:UserService) {
    authservice.user$.subscribe(user=>
   {
     if(user)
     {
+      this.userservice.save(user);//Saving User in Firebase
       let returnUrl=localStorage.getItem('returnUrl')
       this.router.navigateByUrl(returnUrl);
     }
