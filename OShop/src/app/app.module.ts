@@ -1,3 +1,4 @@
+import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 
 
@@ -44,13 +45,13 @@ import { LoginComponent } from './login/login.component';
     RouterModule.forRoot([
       {path:'',component:HomeComponent},
       {path:'products',component:ProductsComponent},
-      {path:'my/orders',component:MyOrdersComponent},
+      {path:'my/orders',component:MyOrdersComponent,canActivate:[AuthGuardService]},
       {path:'shopping-cart',component:ShoppingcartComponent},
-      {path:'check-out',component:CheckoutComponent},
-      {path:'order-success',component:OrderSuccessComponent},
+      {path:'check-out',component:CheckoutComponent,canActivate:[AuthGuardService]},
+      {path:'order-success',component:OrderSuccessComponent,canActivate:[AuthGuardService]},
       {path:'login',component:LoginComponent},
-      {path:'admin/products',component:AdminProductsComponent},
-      {path:'admin/orders',component:AdminOrdersComponent},
+      {path:'admin/products',component:AdminProductsComponent,canActivate:[AuthGuardService]},
+      {path:'admin/orders',component:AdminOrdersComponent,canActivate:[AuthGuardService]},
 
 
     ]),
@@ -58,7 +59,8 @@ import { LoginComponent } from './login/login.component';
 
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
