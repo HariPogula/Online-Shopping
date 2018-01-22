@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
 import { AppComponent } from './app.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
@@ -36,7 +37,7 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    NgbModule.forRoot(),
+    
     RouterModule.forRoot([
       {path:'',component:HomeComponent},
       {path:'products',component:ProductsComponent},
@@ -49,7 +50,8 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
       {path:'admin/orders',component:AdminOrdersComponent},
 
 
-    ])
+    ]),
+    NgbModule.forRoot()
 
   ],
   providers: [],
