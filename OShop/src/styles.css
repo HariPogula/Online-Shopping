@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Bootstrap Theme */
+
+
+@import "bootstrap-theme.css";
+body
+{
+    padding-top:80px;
+}
