@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase';
+import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -7,8 +9,10 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class NavbarComponent implements OnInit {
 
+//We nee dto unsubsribe in OnDestroy(). Instead, we can use asyc pipe.So
+  user$:Observable<firebase.User>;
   constructor(private afAuth:AngularFireAuth) { 
-    afAuth.authState.subscribe(x=>console.log(x));
+this.user$=afAuth.authState;
     
   }
 
