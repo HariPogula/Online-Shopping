@@ -1,3 +1,4 @@
+import { AuthService } from './services/auth.service';
 
 
 import { environment } from './../environments/environment';
@@ -56,7 +57,9 @@ import { LoginComponent } from './login/login.component';
     NgbModule.forRoot()
 
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
