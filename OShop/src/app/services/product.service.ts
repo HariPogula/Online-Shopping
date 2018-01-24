@@ -13,4 +13,12 @@ getAll()
 {
   return this.db.list('/products').snapshotChanges();
 }
+getProduct(productid)
+{
+return this.db.object('/products/'+productid).snapshotChanges();
+}
+updateProduct(productid,product)
+{
+return this.db.object('/products/'+productid).update(product);
+}
 }

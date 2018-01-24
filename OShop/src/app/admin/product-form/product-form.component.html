@@ -5,7 +5,7 @@
         <form  #f="ngForm" (ngSubmit)="Save(f.value)">
             <div class="form-group">
               <label for="title">Title</label>
-              <input #title="ngModel" required ngModel  name="title" type="text"  id="title" class="form-control">
+              <input #title="ngModel" required [(ngModel)]="product.payload.val().title"  name="title" type="text"  id="title" class="form-control">
               <div class="alert alert-warning" *ngIf="title.touched && title.invalid">
                 Title is Required.
               </div>
@@ -15,7 +15,7 @@
                 <label for="price">Price</label>
                 <div class="input-group">
                     <span class="input-group-text">$</span>
-                    <input required #price="ngModel" ngModel  name="price" type="number"
+                    <input required #price="ngModel"[(ngModel)]="product.payload.val().price"  name="price" type="number"
                       id="price" class="form-control" [min]="0">
                   </div>
                   <div class="alert alert-warning" *ngIf="price.touched && price.invalid">
@@ -26,7 +26,7 @@
           
               <div class="form-group">
                   <label for="category">Category</label>
-                  <select required #category="ngModel" ngModel  name="category" id="category" class="form-control">
+                  <select required #category="ngModel" [(ngModel)]="product.payload.val().category"  name="category" id="category" class="form-control">
                     <option value=""></option>
                     <option  *ngFor="let c of categories$ | async" [value]="c.key">
                       {{c.payload.val().name}}</option>
@@ -38,7 +38,7 @@
           
                 <div class="form-group">
                     <label for="imageurl">Image Url</label>
-                    <input url required #imageurl="ngModel" ngModel  name="imageurl" type="url"  id="imageurl" class="form-control">
+                    <input url required #imageurl="ngModel" [(ngModel)]="product.payload.val().imageUrl"  name="imageurl" type="url"  id="imageurl" class="form-control">
                     <div class="alert alert-warning" *ngIf="imageurl.touched && imageurl.invalid">
                        <div *ngIf="imageurl.errors.required">
                           Image Url is Required.
@@ -55,10 +55,10 @@
     </div>
     <div class="col-6">
         <div class="card" style="width: 20rem;">
-            <img class="card-img-top" [src]="imageurl.value" >
+            <img class="card-img-top" [src]="product.payload.val().imageUrl" *ngIf="product.payload.val().imageUrl" >
             <div class="card-body">
-              <h5 class="card-title">{{title.value}} </h5>
-              <p class="card-text">{{price.value|currency:'USD':true}}</p>
+              <h5 class="card-title" >{{product.payload.val().title}}  </h5>
+              <p class="card-text">{{product.payload.val().price|currency:'USD':true}}</p>
               
             </div>
           </div>
