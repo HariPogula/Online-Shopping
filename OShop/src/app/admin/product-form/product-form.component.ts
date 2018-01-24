@@ -36,5 +36,13 @@ Save(product)
 this.productservice.Create(product);
   this.router.navigate(['/admin/products']);
 }
-
+Delete()
+{
+  console.log(this.productId)
+  if(confirm("Are you sure want to delete?? "))
+  {
+    this.productservice.deleteProduct(this.productId);
+    this.router.navigate(['/admin/products']);
+  }
+}
 }
