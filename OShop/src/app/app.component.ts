@@ -17,7 +17,11 @@ export class AppComponent {
     if(user)
     {
       this.userservice.save(user);//Saving User in Firebase
-      let returnUrl=localStorage.getItem('returnUrl')
+      let returnUrl=localStorage.getItem('returnUrl');
+      if(returnUrl)
+      {
+        localStorage.removeItem("returnUrl");
+      }
       this.router.navigateByUrl(returnUrl);
     }
   })

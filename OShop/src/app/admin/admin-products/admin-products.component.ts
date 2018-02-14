@@ -36,7 +36,7 @@ tableResource:DataTableResource<any>;
 
   ngOnInit() {
   }
-private initializeTable(products:any[])
+private initializeTable(products:Products[])
 {
   this.tableResource=new DataTableResource(products);
   this.tableResource.query({offset:0}).
