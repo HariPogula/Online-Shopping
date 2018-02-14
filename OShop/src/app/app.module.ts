@@ -28,6 +28,10 @@ import { UserService } from './services/user.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
+import {DataTableModule} from 'angular5-data-table'
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,11 +50,13 @@ import { CustomFormsModule } from 'ng2-validation';
   imports: [
     BrowserModule,
     FormsModule,
+    DataTableModule,
     //Firebase
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     CustomFormsModule,
+ 
     RouterModule.forRoot([
       {path:'',component:HomeComponent},
       {path:'products',component:ProductsComponent},
@@ -67,7 +73,8 @@ import { CustomFormsModule } from 'ng2-validation';
       {path:'admin/products',component:AdminProductsComponent,canActivate:[AuthGuardService,AdminAuthGuardService]},
 
     ]),
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+
 
   ],
   providers: [

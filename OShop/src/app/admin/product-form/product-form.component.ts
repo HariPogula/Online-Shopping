@@ -15,7 +15,7 @@ export class ProductFormComponent implements OnInit {
 categories$;
   constructor(
     public router:Router,
-    private route:ActivatedRoute,
+    private route:ActivatedRoute, 
     public categoryservice:CategoryService,
     public productservice:ProductService) {
     this.categories$=this.categoryservice.getCategories();
