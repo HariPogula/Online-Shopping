@@ -13,9 +13,9 @@ export class ProductsComponent implements OnInit {
   category: string;
 products:Products[]=[];
 filteredProducts:Products[];
-categories$;
+
   constructor(private productservice:ProductService,
-    private categoryservice:CategoryService,
+ 
   private route:ActivatedRoute) {
    this.productservice
    .getAll()
@@ -33,7 +33,7 @@ return this.route.queryParamMap; //Store in Params Variable in next line
       this.products
     })
       
-    this.categories$=this.categoryservice.getCategories();
+    
    
    }
 
