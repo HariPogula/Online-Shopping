@@ -61,5 +61,22 @@ if (!cartId) {
       }
     });
   }
+  async removeFromCart(key,product) 
+  {
+    const cartId = await this.getOrCreateCartId();
+    let item$=this.getItem(cartId,key)
+     item$.snapshotChanges().take(1).subscribe(item => {
+       if (item.payload.exists()) {
+         item$.update({quantity: item.payload.val().quantity - 1});
+       } else {
+         item$.set({product: {
+           title: product.title,
+           price: product.price,
+           category: product.category,
+           imageUrl: product.imageUrl,
+         }, quantity: 1} );
+       }
+     });
+  }
 }
 
