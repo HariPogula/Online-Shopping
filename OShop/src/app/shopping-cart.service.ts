@@ -1,8 +1,11 @@
-import { AngularFireDatabase } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
+import { ShoppingCart } from './models/shopping-cart';
+import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 
 import { Products } from './classes/products';
 import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ShoppingCartService {
@@ -15,10 +18,14 @@ export class ShoppingCartService {
         dateCreated: new Date().getTime()
       })
   }
-  public async getCart() {
+  
+  public async getCart():Promise<AngularFireObject<ShoppingCart>>
+  {
     let cartId=await this.getOrCreateCartId();
     return this.db.object('/shopping-carts/' + cartId);
   }
+
+
   private async getOrCreateCartId():Promise<string> {
     let cartId = localStorage.getItem('cartId');
     //Another Way
@@ -78,5 +85,15 @@ if (!cartId) {
        }
      });
   }
+  async totalQty() {
+    let count: number;
+    let cart$ = await this.getCart();
+    return cart$.valueChanges().map(cart => {
+    count = 0;
+    for (let prodId in cart.items) 
+       count += cart.items[prodId].quantity;
+    return count;
+    });
+}
 }
 
