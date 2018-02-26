@@ -11,13 +11,13 @@ Create(product)
 {
 return this.db.list('/products').push(product);
 }
-getAll():Observable<any>
+getAll()
 {
-  return this.db.list('/products').valueChanges();
+  return this.db.list('/products').snapshotChanges();
 }
 getProduct(productid)
 {
-return this.db.object('/products/'+productid).snapshotChanges();
+return this.db.object('/products/'+productid).valueChanges()
 }
 updateProduct(productid,product)
 {

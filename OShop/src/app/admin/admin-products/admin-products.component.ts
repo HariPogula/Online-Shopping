@@ -12,7 +12,7 @@ import { DataTableResource } from 'angular5-data-table';
 export class AdminProductsComponent implements OnInit,OnDestroy {
   itemCount: number;
   items: Products[]=[];
-products:Products[];
+products:any[];
 
 subscription:Subscription;
 tableResource:DataTableResource<any>;
@@ -22,7 +22,7 @@ tableResource:DataTableResource<any>;
     .subscribe(x => 
     {
       this.products = x;
-     this.initializeTable(x)
+     this.initializeTable(this.products)
 
       
     })

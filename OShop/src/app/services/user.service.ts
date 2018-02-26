@@ -21,4 +21,5 @@ this.db.object('/users/'+user.uid).update(
   }
 )
 }
+
 }
